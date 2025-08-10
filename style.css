@@ -1,0 +1,348 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+  color: #222;
+}
+nav {
+  background: #e27208;
+  height: 80px;
+  color: #035015;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-size: 20px;
+}
+
+nav #logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+nav .logo img {
+  height: 60px;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5em;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a {
+  color: #005b13;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav ul li a:hover {
+  color: #222;
+}
+.hero {
+  background: #117711;
+  text-align: center;
+  padding: 2em 1em;
+}
+.hero img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1em;
+  border-radius: 10px;
+}
+section, main {
+  max-width: 900px;
+  margin: 2em auto;
+  background: #fff;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.news ul, .organs-list, .achievements-list, .manifesto-list {
+  padding: 0;
+  list-style: none;
+}
+.news li, .organs-list li, .achievements-list li, .manifesto-list li {
+  margin-bottom: 1em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5em;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+}
+.gallery img {
+  max-width: 300px;
+  border-radius: 8px;
+}
+footer {
+  background: #005b13;
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 2em;
+}
+.footer-logo {
+  height: 30px;
+  vertical-align: middle;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  max-width: 400px;
+}
+form input, form textarea {
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+form button {
+  background: #005b13;
+  color: #fff;
+  border: none;
+  padding: 0.7em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+form button:hover {
+  background: #003d0d;
+}
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  section, main {
+    padding: 1em 0.5em;
+  }
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.activities-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5em;
+  margin-top: 2em;
+}
+.activity-item {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.activity-item:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.activity-item img, .activity-item video {
+  width: 100%;
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+.activity-caption {
+  padding: 0.7em 1em;
+  font-size: 1em;
+  color: #333;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .activities-gallery {
+    grid-template-columns: 1fr;
+  }
+  .activity-item img, .activity-item video {
+    height: 160px;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.video-section {
+  margin-top: 2.5em;
+}
+
+.home-bg {
+  background: url('images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+.home-bg::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.7); /* Light overlay for readability */
+  z-index: 0;
+  pointer-events: none;
+}
+.home-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body > nav {
+  position: relative;
+  z-index: 2;
+}
+
+body > *:not(nav):not(.background-video) {
+  position: relative;
+  z-index: 2;
+}
+
+.background-video::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.7);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.highlights, .events, .newsletter {
+  background: #fff;
+  margin: 2em auto;
+  padding: 2em 1em;
+  border-radius: 12px;
+  max-width: 900px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  text-align: center;
+}
+.highlight-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: center;
+  margin-top: 1em;
+}
+.card {
+  background: #e0ffe0;
+  border-radius: 10px;
+  padding: 1.2em 1em;
+  min-width: 180px;
+  max-width: 220px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(34, 139, 34, 0.13);
+}
+.card h3 {
+  color: #e27208;
+  margin-bottom: 0.5em;
+}
+.events ul {
+  list-style: none;
+  padding: 0;
+}
+.events li {
+  margin-bottom: 0.7em;
+  font-size: 1.1em;
+}
+.newsletter input[type='email'] {
+  padding: 0.5em;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 60%;
+  margin-right: 0.5em;
+}
+.newsletter button {
+  padding: 0.5em 1.2em;
+  background: #e27208;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.newsletter button:hover {
+  background: #035015;
+}
+@media (max-width: 700px) {
+  .highlight-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.manifesto-section {
+  background: #fff;
+  margin: 2.5em auto;
+  padding: 2.5em 1.5em;
+  border-radius: 14px;
+  max-width: 900px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.11);
+}
+.manifesto-section h2 {
+  margin-bottom: 1em;
+  color: #e27208;
+}
+.manifesto-section p {
+  font-size: 1.1em;
+  margin-bottom: 1.5em;
+}
+.manifesto-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.manifesto-list li {
+  background: #e0ffe0;
+  border-radius: 8px;
+  margin-bottom: 1.2em;
+  padding: 1em 1.2em;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.manifesto-list strong {
+  color: #035015;
+  font-size: 1.1em;
+}
+.cta-btn {
+  display: inline-block;
+  margin-top: 1em;
+  padding: 0.7em 1.5em;
+  background: #e27208;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.cta-btn:hover {
+  background: #035015;
+}
